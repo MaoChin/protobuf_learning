@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package contacts;
+
+message PeopleInfo{
+	string name = 1;
+	uint32 age = 2;
+
+	// 嵌套定义
+	message Phone{
+		string num = 1;
+	}
+	repeated Phone phone = 3;
+}
+message Contacts{
+	repeated PeopleInfo contacts = 1;
+}

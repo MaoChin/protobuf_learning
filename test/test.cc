@@ -20,6 +20,7 @@ int main()
 
 	{
 		contacts::PeopleInfo peo;
+		// 反序列化
 		if(!peo.ParseFromString(peopleInfo))
 			cout << "peo.ParseFromString() error" << endl;
 
