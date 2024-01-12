@@ -11,10 +11,11 @@ int main()
 		contacts::PeopleInfo peo;
 		peo.set_name("aaa");
 		peo.set_age(100);
-		// 序列化
+		// 序列化---序列化的结果都是二进制字节序列！！
 		if(!peo.SerializeToString(&peopleInfo))
 			cout << "peo.SerializeToString() error" << endl;
 
+		// 序列化的结果是二进制字节序列，所以打印的时候会有乱码
 		cout << "序列化后: " << peopleInfo << endl;
 	}
 

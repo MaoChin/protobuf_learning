@@ -1,8 +1,16 @@
 syntax = "proto3";
 
 package contacts;
+// 引入any.proto
+import "google/protobuf/any.proto";
 
 // 编译后一个message就会对应一个类，然后对于字段会有对应的set，get方法，以及类的序列化，反序列化方法
+
+// 加入联系人地址信息
+message Address{
+	string home_address = 1;
+	string comp_address = 2;
+}
 message PeopleInfo{
 	// singular是默认使用的规则
 	string name = 1;
@@ -11,9 +19,18 @@ message PeopleInfo{
 	// 嵌套定义
 	message Phone{
 		string num = 1;
+
+		// 引入enum类型
+		enum PhoneType{
+			MP = 0;				// 移动电话
+			TEL = 1;			// 固定电话
+		}
+		PhoneType type = 2;
 	}
 	// message也可以当作类型使用，repeated相当于定义了一个数组
 	repeated Phone phone = 3;
+	// Any类型，可以理解成泛型类型
+	google.protobuf.Any data = 4;
 }
 message Contacts{
 	// 把message当作类型使用

@@ -11,6 +11,13 @@ message PeopleInfo{
 	// 嵌套定义
 	message Phone{
 		string num = 1;
+
+		// 引入enum类型
+		enum PhoneType{
+			MP = 0;				// 移动电话
+			TEL = 1;			// 固定电话
+		}
+		PhoneType type = 2;
 	}
 	// message也可以当作类型使用，repeated相当于定义了一个数组
 	repeated Phone phone = 3;
