@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package add_contact;
+
+// 编译后一个message就会对应一个类，然后对于字段会有对应的set，get方法，以及类的序列化，反序列化方法
+message AddContactRequest{
+	string name = 1;
+	int32 age = 2;
+
+	message Phone{
+		string number = 1;
+		enum PhoneType{
+			MP = 0;
+			TEL = 1;
+		}
+		PhoneType type = 2;
+	}
+	repeated Phone phone = 3;
+}
+
+message AddContactResponse{
+	bool success = 1;
+	string desc_info = 2;
+	string uid = 3;
+}
